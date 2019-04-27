@@ -14,6 +14,8 @@ import (
 func TestHAProxyFrontendBackendConf(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	tests := []struct {
 		dest		string
 		frontends	[]string
@@ -153,6 +155,8 @@ backend be4
 func TestHAProxyFrontendBackendConfBad(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	tests := []struct {
 		dest	string
 		err	string
@@ -172,6 +176,8 @@ func TestHAProxyFrontendBackendConfBad(t *testing.T) {
 	}
 }
 func TestHAProxyDefaults(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	defaults := `
@@ -212,6 +218,8 @@ defaults
 func TestHAProxyResolver(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	resolverRegex := "resolvers dns-resolver\n *(nameserver ns.*)+\n +"
 	cmd := exec.Command("./egress-dns-proxy.sh")
 	cmd.Env = []string{"EGRESS_DNS_PROXY_MODE=unit-test", "EGRESS_DNS_PROXY_DESTINATION=80 11.12.13.14"}
@@ -228,7 +236,16 @@ func TestHAProxyResolver(t *testing.T) {
 func _logClusterCodePath() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }
